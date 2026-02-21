@@ -19,11 +19,11 @@ const config: SiteConfig = {
   font: 'JetBrains Mono Variable',
   pageSize: 6,
   trailingSlashes: false,
-  // ナビ: Home / About / Archive のみ（ブログ用）
   navLinks: [
     { name: 'Home', url: '/' },
     { name: 'About', url: '/about' },
     { name: 'Blog', url: '/blog' },
+    { name: 'GitHub', url: 'https://github.com/sugiyan97', external: true },
   ],
   // テーマ: 明/暗の2テーマのみ（light-dark-auto）
   themes: {
@@ -32,9 +32,8 @@ const config: SiteConfig = {
     include: ['github-light', 'github-dark'],
     overrides: {},
   },
-  // ソーシャルリンク（使うものだけURLを設定、不要は空文字）
   socialLinks: {
-    github: '',
+    github: 'https://github.com/sugiyan97',
     mastodon: '',
     email: '',
     linkedin: '',
