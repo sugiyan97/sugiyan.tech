@@ -14,7 +14,7 @@ const config: SiteConfig = {
   // Path to the image used for generating social media previews.
   // Needs to be a square JPEG file due to limitations of the social card generator.
   // Try https://squoosh.app/ to easily convert images to JPEG.
-  socialCardAvatarImage: './src/content/avatar.jpg',
+  socialCardAvatarImage: './src/content/avatar.png',
   // Font imported from @fontsource or elsewhere, used for the entire site.
   font: 'JetBrains Mono Variable',
   pageSize: 6,
