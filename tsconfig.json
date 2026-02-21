@@ -7,7 +7,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "baseUrl": ".",
-    "paths": { "~/*": ["src/*"] },
+    "paths": { "~/*": ["src/*"], "astro": ["./node_modules/astro"] },
     "plugins": [{ "name": "@astrojs/ts-plugin" }],
     "jsx": "react-jsx",
     "jsxImportSource": "react"

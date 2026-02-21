@@ -23,9 +23,7 @@ const pageDescription = description || siteConfig.description
 const pageAuthor = author || siteConfig.author
 const pageImage =
   pageType === 'article'
-    ? Astro.url.origin +
-      Astro.url.pathname.replace(/\/blog\//, '/social-cards/') +
-      '.png'
+    ? Astro.url.origin + Astro.url.pathname.replace(/\/blog\//, '/social-cards/') + '.png'
     : `${Astro.url.origin}/social-cards/__default.png`
 const pageKeywords = [
   ...new Set(siteConfig.tags.concat(tags || []).map((word) => word.toLowerCase())),
