@@ -25,11 +25,11 @@ const config: SiteConfig = {
     { name: 'Blog', url: '/blog' },
     { name: 'GitHub', url: 'https://github.com/sugiyan97', external: true },
   ],
-  // テーマ: 明/暗の2テーマのみ（light-dark-auto）
+  // テーマ: select モードで複数から選択（SelectTheme.astro が表示される）
   themes: {
-    mode: 'light-dark-auto',
-    default: 'auto',
-    include: ['github-light', 'github-dark'],
+    mode: 'select',
+    default: 'github-dark',
+    include: ['github-light', 'github-dark', 'dracula'],
     overrides: {},
   },
   socialLinks: {
