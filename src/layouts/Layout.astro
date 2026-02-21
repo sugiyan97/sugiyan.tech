@@ -59,8 +59,15 @@ if (
   )
   defaultTheme = siteConfig.themes.include[0]
 }
-let lightTheme = themeMode === 'light-dark-auto' ? includedThemes[0] : undefined
-let darkTheme = themeMode === 'light-dark-auto' ? includedThemes[1] : undefined
+// select モードでもライト/ダーク切替ボタン用に先頭2テーマを渡す
+let lightTheme =
+  themeMode === 'light-dark-auto' || themeMode === 'select'
+    ? includedThemes[0]
+    : undefined
+let darkTheme =
+  themeMode === 'light-dark-auto' || themeMode === 'select'
+    ? includedThemes[1]
+    : undefined
 
 // Generate a hash to use for cache busting the theme settings in localStorage.
 const themeHash = crypto
@@ -151,6 +158,7 @@ let generatedCss: string = cssLines.join('\n')
     <style is:inline set:html={generatedCss}></style>
     {themeMode === 'light-dark-auto' && <LightDarkAutoThemeLoader />}
     {themeMode === 'select' && <SelectThemeLoader />}
+    {themeMode === 'select' && <LightDarkAutoThemeLoader />}
   </head>
   <body class="w-full h-full m-0 bg-background text-foreground">
     <div
