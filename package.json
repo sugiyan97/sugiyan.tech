@@ -1,6 +1,6 @@
 {
-  "name": "multiterm-astro",
-  "description": "A terminal-inspired coding blog built with Astro.",
+  "name": "sugiyan.tech",
+  "description": "sugiyan's tech blog",
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@9.15.0",
