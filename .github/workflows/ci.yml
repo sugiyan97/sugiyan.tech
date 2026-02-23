@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: ['main', 'feat/*', 'fix/*']
+    paths:
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.astro'
+  pull_request:
+    branches: ['main', 'feat/*', 'fix/*']
+    paths:
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.astro'
+
+permissions:
+  contents: read
+
+env:
+  BUILD_PATH: '.'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          cache-dependency-path: ${{ env.BUILD_PATH }}/pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: ${{ env.BUILD_PATH }}
+      - name: Build
+        run: pnpm exec astro build
+        working-directory: ${{ env.BUILD_PATH }}
