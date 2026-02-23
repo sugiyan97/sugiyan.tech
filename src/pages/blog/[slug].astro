@@ -61,6 +61,14 @@ if (postData.tags && postData.tags.length > 0) {
   const tagsGroup = await TagsGroup.build(sortedPosts)
   tags = tagsGroup.matchMany(postData.tags)
 }
+
+// Only use Image when coverImage.src is resolved ImageMetadata (object). String paths like "./cover.jpg" would cause getImage to throw.
+const coverImage = postData.coverImage
+const hasValidCoverImage =
+  coverImage &&
+  typeof coverImage.src === 'object' &&
+  coverImage.src !== null &&
+  'width' in coverImage.src
 ---
 
 <Layout
@@ -71,12 +79,12 @@ if (postData.tags && postData.tags.length > 0) {
 >
   <article class="max-w-full py-7.5" data-pagefind-body>
     {
-      postData.coverImage && (
+      hasValidCoverImage && (
         <Image
           priority
           layout="constrained"
-          src={postData.coverImage.src}
-          alt={postData.coverImage.alt}
+          src={coverImage.src}
+          alt={coverImage.alt}
           class="w-full rounded-xl mb-5"
         />
       )
