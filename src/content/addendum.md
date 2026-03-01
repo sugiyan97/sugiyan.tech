@@ -4,4 +4,4 @@ avatarImage:
   alt: 'My avatar'
 ---
 
-Thanks for reading my blog post! Feel free to check out my other posts or contact me via the social links in the footer.
+ブログ記事を読んでくださりありがとうございます！他の記事もぜひご覧ください。また、フッターにあるソーシャルメディアのリンクから、お気軽にご連絡ください。

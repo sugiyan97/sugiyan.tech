@@ -4,9 +4,9 @@ const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
   site: 'https://sugiyan.tech',
   // The name of your site, used in the title and for SEO.
-  title: "sugiyan's blog",
+  title: "sugiyan's tech blog",
   // The description of your site, used for SEO and RSS feed.
-  description: "sugiyan's tech blog",
+  description: 'sugiyan の技術ブログ。Backend/Full-Stack のメモと学び。',
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'sugiyan',
   // Keywords for SEO, used in the meta tags.
@@ -36,9 +36,9 @@ const config: SiteConfig = {
     github: 'https://github.com/sugiyan97',
     mastodon: '',
     email: '',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/yoshiyuki-sugiyama/',
     bluesky: '',
-    twitter: '',
+    twitter: 'https://x.com/sugiyan97_tech',
     rss: true,
   },
   // コメントは未使用（使う場合は https://giscus.app/ で設定）
