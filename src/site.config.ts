@@ -36,9 +36,9 @@ const config: SiteConfig = {
     github: 'https://github.com/sugiyan97',
     mastodon: '',
     email: '',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/yoshiyuki-sugiyama/',
     bluesky: '',
-    twitter: '',
+    twitter: 'https://x.com/sugiyan97_tech',
     rss: true,
   },
   // コメントは未使用（使う場合は https://giscus.app/ で設定）
