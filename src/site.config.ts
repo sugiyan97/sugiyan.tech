@@ -6,7 +6,7 @@ const config: SiteConfig = {
   // The name of your site, used in the title and for SEO.
   title: "sugiyan's tech blog",
   // The description of your site, used for SEO and RSS feed.
-  description: "sugiyan's tech blog",
+  description: 'sugiyan の技術ブログ。Backend/Full-Stack のメモと学び。',
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'sugiyan',
   // Keywords for SEO, used in the meta tags.
