@@ -162,14 +162,25 @@ function getMonthLabels(
 
 const { username, year = 'last' } = Astro.props
 
-const data = await fetchData(username, year)
+let data: GitHubActivityApiResponse | undefined
+try {
+  data = await fetchData(username, year)
+} catch (error) {
+  console.warn(
+    `GitHub Activity Calendar: fetch failed — ${error instanceof Error ? error.message : String(error)}`,
+  )
+}
 
 const themeFromColorscheme: [string, string] = [
   'var(--theme-background)',
   'var(--theme-accent)',
 ]
 
-const totalCount = year === 'last' ? data.total.lastYear : data.total[year]
+const totalCount = data
+  ? year === 'last'
+    ? data.total.lastYear
+    : data.total[year]
+  : 0
 const maxLevel = 4
 const blockMargin = 4
 const labelMargin = 8
@@ -182,11 +193,13 @@ const hideTotalCount = false
 const weekStart = 0 // 0 = Sunday, 1 = Monday, etc.
 
 const colorScale = calcColorScale(themeFromColorscheme, maxLevel + 1)
-const activities = data.contributions
+const activities = data?.contributions ?? []
 
 const firstActivity = activities[0]
-const activityYear = getYear(parseISO(firstActivity.date))
-const weeks = groupByWeeks(activities, weekStart)
+const activityYear = firstActivity
+  ? getYear(parseISO(firstActivity.date))
+  : new Date().getFullYear()
+const weeks = activities.length > 0 ? groupByWeeks(activities, weekStart) : []
 const labels = {
   months: [
     'Jan',
@@ -213,7 +226,7 @@ const width = weeks.length * (blockSize + blockMargin) - blockMargin
 const height = labelHeight + (blockSize + blockMargin) * 7 - blockMargin
 ---
 
-<article
+{data && <article
   id="github-activity-calendar"
   class="w-max max-w-full flex flex-col gap-2 text-sm"
 >
@@ -304,4 +317,4 @@ const height = labelHeight + (blockSize + blockMargin) * 7 - blockMargin
       </footer>
     )
   }
-</article>
+</article>}
