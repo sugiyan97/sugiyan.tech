@@ -24,13 +24,13 @@ importers:
         specifier: ^1.10.7
         version: 1.10.7
       '@expo-google-fonts/jetbrains-mono':
-        specifier: ^0.4.1
+        specifier: ^0.4.0
         version: 0.4.1
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.42.0
         version: 0.42.0
       '@fontsource-variable/jetbrains-mono':
-        specifier: ^5.2.8
+        specifier: ^5.2.6
         version: 5.2.8
       '@pagefind/default-ui':
         specifier: ^1.5.2
@@ -45,10 +45,10 @@ importers:
         specifier: ^3.0.4
         version: 3.0.4
       '@types/react':
-        specifier: ^19.2.14
+        specifier: ^19.1.12
         version: 19.2.14
       '@types/react-dom':
-        specifier: ^19.2.3
+        specifier: ^19.1.9
         version: 19.2.3(@types/react@19.2.14)
       astro:
         specifier: ^6.3.1
@@ -57,13 +57,13 @@ importers:
         specifier: ^0.42.0
         version: 0.42.0(astro@6.3.1(@types/node@24.12.0)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.3)(sass-embedded@1.99.0)(sass@1.99.0)(yaml@2.8.3))
       color:
-        specifier: ^5.0.3
+        specifier: ^5.0.0
         version: 5.0.3
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
       emoji-regex:
-        specifier: ^10.6.0
+        specifier: ^10.5.0
         version: 10.6.0
       gemoji:
         specifier: ^8.1.0
@@ -81,13 +81,13 @@ importers:
         specifier: ^0.16.45
         version: 0.16.45
       markdown-it:
-        specifier: ^14.1.1
+        specifier: ^14.1.0
         version: 14.1.1
       mdast-util-directive:
         specifier: ^3.1.0
         version: 3.1.0
       mdast-util-find-and-replace:
-        specifier: ^3.0.2
+        specifier: ^3.0.0
         version: 3.0.2
       mdast-util-to-markdown:
         specifier: ^2.1.2
@@ -135,13 +135,13 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0
       typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
+        specifier: ^6.0.3
+        version: 6.0.3
       unified:
         specifier: ^11.0.5
         version: 11.0.5
       unist-util-visit:
-        specifier: ^5.1.0
+        specifier: ^5.0.0
         version: 5.1.0
     devDependencies:
       '@types/markdown-it':
@@ -2445,8 +2445,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -5399,7 +5399,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  typescript@5.9.3: {}
+  typescript@6.0.3: {}
 
   uc.micro@2.1.0: {}
 
