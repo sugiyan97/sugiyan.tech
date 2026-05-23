@@ -30,7 +30,7 @@
     "astro": "^6.3.5",
     "astro-expressive-code": "^0.42.0",
     "color": "^5.0.3",
-    "date-fns": "^4.1.0",
+    "date-fns": "^4.3.0",
     "emoji-regex": "^10.6.0",
     "gemoji": "^8.1.0",
     "github-slugger": "^2.0.0",
