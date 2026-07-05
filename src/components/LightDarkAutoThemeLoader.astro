@@ -12,7 +12,7 @@
       throw new Error('Theme attributes are required.')
     }
     const getStoredTheme = () => localStorage.getItem('data-theme')
-    let storedTheme = getStoredTheme()
+    const storedTheme = getStoredTheme()
     const storedThemeHash = localStorage.getItem('data-theme-hash')
     const themeHashMatches = storedThemeHash === pageThemeHash
 

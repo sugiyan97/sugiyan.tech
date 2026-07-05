@@ -18,7 +18,10 @@ const remarkCharacterDialogue: Plugin<[{ characters: Record<string, string> }], 
   (opts) => (tree) => {
     // Type guard to check if a string is a valid character dialogue key
     function isCharacterDialogue(s: string): s is keyof typeof opts.characters {
-      return opts.characters.hasOwnProperty(s) && opts.characters[s] !== undefined
+      return (
+        Object.prototype.hasOwnProperty.call(opts.characters, s) &&
+        opts.characters[s] !== undefined
+      )
     }
 
     // Do nothing if no characters are defined
