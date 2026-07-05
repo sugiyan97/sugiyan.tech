@@ -8,6 +8,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
+    "check": "astro check",
+    "format:check": "prettier --check .",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write ."
@@ -52,14 +54,15 @@
     "sanitize-html": "^2.17.4",
     "satori": "^0.26.0",
     "satori-html": "^0.3.2",
+    "sharp": "^0.34.5",
     "stream-replace-string": "^2.0.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3",
     "unified": "^11.0.5",
-    "unist-util-visit": "^5.1.0",
-    "sharp": "^0.34.5"
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.16.1",
     "pagefind": "^1.5.2",
