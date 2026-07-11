@@ -24,6 +24,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/ts-plugin": "^1.10.9",
     "@expo-google-fonts/jetbrains-mono": "^0.4.1",
+    "@expo-google-fonts/noto-sans-jp": "^0.4.3",
     "@expressive-code/plugin-line-numbers": "^0.42.0",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@pagefind/default-ui": "^1.5.2",
