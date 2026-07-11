@@ -37,6 +37,9 @@ jobs:
       - name: Type check
         run: pnpm run check
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Test
+        run: pnpm run test
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Build
         run: pnpm run build
         working-directory: ${{ env.BUILD_PATH }}
