@@ -27,6 +27,30 @@ const DIRECTIVE_NAME = 'github'
 const USER_AGENT = 'nodejs'
 // 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:137.0) Gecko/20100101 Firefox/137.0',
 
+/** Fetches JSON from the GitHub API, returning null instead of throwing on failure. */
+async function fetchGithub(url: string): Promise<any | null> {
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } })
+    if (!res.ok) {
+      console.warn(`remark-github-card: GitHub API responded ${res.status} for ${url}`)
+      return null
+    }
+    return await res.json()
+  } catch (error) {
+    console.warn(
+      `remark-github-card: fetch failed for ${url} — ${error instanceof Error ? error.message : String(error)}`,
+    )
+    return null
+  }
+}
+
+/** Plain link fallback used when the GitHub API is unreachable or rate-limited. */
+function fallbackLink(text: string, url: string): P {
+  return h('a', { class: 'github-card-fallback', href: url }, [
+    { type: 'text', value: text },
+  ])
+}
+
 export const remarkGithubCard: Plugin<[], Root> = () => async (tree) => {
   tree.children = await Promise.all(
     tree.children.map(async (node): Promise<RootContent> => {
@@ -48,15 +72,8 @@ export const remarkGithubCard: Plugin<[], Root> = () => async (tree) => {
 
       // If its a repo link
       if (repoParts.length > 1) {
-        const res = await fetch(`https://api.github.com/repos/${repoName}`, {
-          headers: {
-            'User-Agent': USER_AGENT,
-          },
-        })
-        if (!res || res.status !== 200) {
-          throw new Error(`Fetching GitHub repo data for "${repoName}" failed`)
-        }
-        const data = await res.json()
+        const data = await fetchGithub(`https://api.github.com/repos/${repoName}`)
+        if (!data) return fallbackLink(repoName, realUrl)
         const description = data.description
           ? data.description.replace(/:[a-zA-Z0-9_]+:/g, '')
           : undefined
@@ -107,15 +124,8 @@ export const remarkGithubCard: Plugin<[], Root> = () => async (tree) => {
 
       // If its a user link
       else if (repoParts.length === 1) {
-        const res = await fetch(`https://api.github.com/users/${repoName}`, {
-          headers: {
-            'User-Agent': USER_AGENT,
-          },
-        })
-        if (!res || res.status !== 200) {
-          throw new Error(`Fetching GitHub user data for "${repoName}" failed`)
-        }
-        const data = await res.json()
+        const data = await fetchGithub(`https://api.github.com/users/${repoName}`)
+        if (!data) return fallbackLink(repoName, realUrl)
         const backgroundImage = data.avatar_url
         const followers = Intl.NumberFormat(undefined, {
           notation: 'compact',
