@@ -27,7 +27,7 @@ const showLightDarkButton =
       <Search trailingSlashes={siteConfig.trailingSlashes} />
       {selectTheme && <SelectTheme />}
       {showLightDarkButton && <LightDarkAutoButton />}
-      <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
+      <nav id="nav-mobile" aria-label="Mobile menu" class="p-0 text-accent sm:hidden">
         <button
           id="nav-mobile-button"
           class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
@@ -43,7 +43,7 @@ const showLightDarkButton =
         >
           {
             siteConfig.navLinks.map((link) => (
-              <li class="p-1" aria-expanded="false">
+              <li class="p-1">
                 <NavLink link={link} />
               </li>
             ))
@@ -52,11 +52,11 @@ const showLightDarkButton =
       </nav>
     </div>
   </div>
-  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
+  <nav aria-label="Main menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
     <ul class="flex flex-row text-accent">
       {
         siteConfig.navLinks.map((link) => (
-          <li class="mr-5" aria-expanded="true">
+          <li class="mr-5">
             <NavLink link={link} />
           </li>
         ))
@@ -68,9 +68,8 @@ const showLightDarkButton =
 <script>
   const navMobileButton = document.getElementById('nav-mobile-button')
   const navMobileList = document.getElementById('nav-mobile-list')
-  const navMobileListItems = navMobileList?.querySelectorAll('li')
   const toggleNavMobileMenu = (action: 'on' | 'off' | 'toggle') => {
-    let isNowOpen: boolean = false
+    let isNowOpen: boolean
     if (action === 'on') {
       isNowOpen = true
       navMobileList?.classList.remove('invisible')
@@ -81,9 +80,6 @@ const showLightDarkButton =
       isNowOpen = !navMobileList?.classList.toggle('invisible')
     }
     navMobileButton?.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
-    navMobileListItems?.forEach((listItem) => {
-      listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
-    })
   }
   navMobileButton?.addEventListener('click', (_ev) => {
     toggleNavMobileMenu('toggle')

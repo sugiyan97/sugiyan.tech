@@ -12,10 +12,9 @@ function kebabToTitleCase(str: string): string {
 }
 ---
 
-<select-theme class="ms-auto" id="search">
+<select-theme class="ms-auto" id="select-theme">
   <button
     class="hover:text-accent flex cursor-pointer items-center justify-center rounded-md"
-    aria-keyshortcuts="Control+K Meta+K"
     data-open-modal
     disabled
   >
@@ -98,24 +97,17 @@ function kebabToTitleCase(str: string): string {
         console.warn('Dialog not found')
       }
 
-      let themeChangeButtons = this.querySelectorAll('#theme-change-list button')
+      const themeChangeButtons = this.querySelectorAll('#theme-change-list button')
       themeChangeButtons?.forEach((button) => {
         button.addEventListener('click', (ev) => {
           ev.preventDefault()
-          let themeId = button.getAttribute('data-theme')
+          const themeId = button.getAttribute('data-theme')
           if (themeId) {
             document.documentElement.setAttribute('data-theme', themeId)
             localStorage.setItem('data-theme', themeId)
             this.closeModal()
           }
         })
-      })
-    }
-
-    connectedCallback() {
-      // window events, requires cleanup
-      window.addEventListener('keydown', this.onWindowKeydown, {
-        signal: this.#controller.signal,
       })
     }
 
@@ -155,18 +147,6 @@ function kebabToTitleCase(str: string): string {
       }
     }
 
-    onWindowKeydown = (e: KeyboardEvent) => {
-      if (!this.#dialog) {
-        console.warn('Dialog not found')
-        return
-      }
-      // check if it's the Control+K or ⌘+K shortcut
-      if ((e.metaKey === true || e.ctrlKey === true) && e.key === 'k') {
-        this.#dialog.open ? this.closeModal() : this.openModal()
-        e.preventDefault()
-      }
-    }
-
     highlightCurrentTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme')
       if (!currentTheme) {
@@ -175,7 +155,7 @@ function kebabToTitleCase(str: string): string {
       }
       const themeChangeListItems = this.querySelectorAll('#theme-change-list li')
       themeChangeListItems?.forEach((listItem) => {
-        let button = listItem.querySelector('button')
+        const button = listItem.querySelector('button')
         if (!button) {
           console.warn('No button found in theme change list item.')
           return

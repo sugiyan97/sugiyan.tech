@@ -6,6 +6,7 @@ import remarkDescription from './remark-description'
 function run(markdown: string, options?: { maxChars?: number }) {
   const frontmatter: Record<string, unknown> = {}
   const tree = unified().use(remarkParse).parse(markdown)
+  // @ts-expect-error - unified plugins expect `this: Processor`; called directly outside `.use()` for unit testing
   const transform = remarkDescription(options)
   // @ts-expect-error - minimal fake VFile, only `data.astro.frontmatter` is read
   transform(tree, { data: { astro: { frontmatter } } })
@@ -16,6 +17,7 @@ describe('remarkDescription', () => {
   it('uses the existing frontmatter description if present', () => {
     const frontmatter: Record<string, unknown> = { description: 'Already set' }
     const tree = unified().use(remarkParse).parse('# Title\n\nSome body text.')
+    // @ts-expect-error - unified plugins expect `this: Processor`; called directly outside `.use()` for unit testing
     const transform = remarkDescription()
     // @ts-expect-error - minimal fake VFile
     transform(tree, { data: { astro: { frontmatter } } })
