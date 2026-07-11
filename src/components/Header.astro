@@ -69,7 +69,7 @@ const showLightDarkButton =
   const navMobileButton = document.getElementById('nav-mobile-button')
   const navMobileList = document.getElementById('nav-mobile-list')
   const toggleNavMobileMenu = (action: 'on' | 'off' | 'toggle') => {
-    let isNowOpen: boolean = false
+    let isNowOpen: boolean
     if (action === 'on') {
       isNowOpen = true
       navMobileList?.classList.remove('invisible')

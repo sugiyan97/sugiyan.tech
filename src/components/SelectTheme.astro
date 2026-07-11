@@ -97,11 +97,11 @@ function kebabToTitleCase(str: string): string {
         console.warn('Dialog not found')
       }
 
-      let themeChangeButtons = this.querySelectorAll('#theme-change-list button')
+      const themeChangeButtons = this.querySelectorAll('#theme-change-list button')
       themeChangeButtons?.forEach((button) => {
         button.addEventListener('click', (ev) => {
           ev.preventDefault()
-          let themeId = button.getAttribute('data-theme')
+          const themeId = button.getAttribute('data-theme')
           if (themeId) {
             document.documentElement.setAttribute('data-theme', themeId)
             localStorage.setItem('data-theme', themeId)
@@ -155,7 +155,7 @@ function kebabToTitleCase(str: string): string {
       }
       const themeChangeListItems = this.querySelectorAll('#theme-change-list li')
       themeChangeListItems?.forEach((listItem) => {
-        let button = listItem.querySelector('button')
+        const button = listItem.querySelector('button')
         if (!button) {
           console.warn('No button found in theme change list item.')
           return

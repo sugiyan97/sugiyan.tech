@@ -31,10 +31,10 @@ const filteredHeadings = headings.filter(({ depth }) => depth >= 2 && depth <= 3
   const links = document.querySelectorAll('details.toc > nav > ul > li')
   if (anchors.length === links.length && anchors.length > 0) {
     window.addEventListener('scroll', (_event) => {
-      let scrollTop = window.scrollY
+      const scrollTop = window.scrollY
       let highlighted = false
       // then iterate backwards, on the first match highlight it and break
-      for (var i = anchors.length - 1; i >= 0; i--) {
+      for (let i = anchors.length - 1; i >= 0; i--) {
         const anchor = anchors[i] as HTMLElement
         if (!highlighted && scrollTop > anchor.offsetTop - 75) {
           links[i].classList.add('active-heading')
