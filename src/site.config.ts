@@ -14,7 +14,7 @@ const config: SiteConfig = {
   // Path to the image used for generating social media previews.
   // Needs to be a square JPEG file due to limitations of the social card generator.
   // Try https://squoosh.app/ to easily convert images to JPEG.
-  socialCardAvatarImage: './src/content/avatar.png',
+  socialCardAvatarImage: './src/content/avatar.jpg',
   // Font imported from @fontsource or elsewhere, used for the entire site.
   font: 'JetBrains Mono Variable',
   pageSize: 6,
@@ -41,10 +41,6 @@ const config: SiteConfig = {
     twitter: 'https://x.com/sugiyan97_tech',
     rss: true,
   },
-  // コメントは未使用（使う場合は https://giscus.app/ で設定）
-  giscus: undefined,
-  // キャラクターチャットは使用しない
-  characters: {},
 }
 
 export default config

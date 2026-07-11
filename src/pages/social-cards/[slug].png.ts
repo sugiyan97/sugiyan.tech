@@ -8,11 +8,18 @@ import path from 'path'
 import fs from 'fs'
 import type { ReactNode } from 'react'
 
-// Load the font file as binary data
+// Load the font files as binary data
 const fontPath = path.resolve(
   './node_modules/@expo-google-fonts/jetbrains-mono/400Regular/JetBrainsMono_400Regular.ttf',
 )
 const fontData = fs.readFileSync(fontPath) // Reads the file as a Buffer
+
+// JetBrains Mono has no CJK glyphs, so titles in Japanese (etc.) rendered blank/tofu
+// without a fallback font registered alongside it.
+const cjkFontPath = path.resolve(
+  './node_modules/@expo-google-fonts/noto-sans-jp/400Regular/NotoSansJP_400Regular.ttf',
+)
+const cjkFontData = fs.readFileSync(cjkFontPath)
 
 const avatarPath = path.resolve(siteConfig.socialCardAvatarImage)
 let avatarData: Buffer | undefined
@@ -52,6 +59,12 @@ const ogOptions: SatoriOptions = {
       style: 'normal',
       weight: 400,
     },
+    {
+      data: cjkFontData,
+      name: 'Noto Sans JP',
+      style: 'normal',
+      weight: 400,
+    },
   ],
   height: 630,
   width: 1200,
@@ -81,7 +94,7 @@ export async function GET(context: APIContext) {
   const { pubDate, title, author } = context.props as Props
   const svg = await satori(markup(title, pubDate, author) as ReactNode, ogOptions)
   const png = new Resvg(svg).render().asPng()
-  return new Response(png, {
+  return new Response(new Uint8Array(png), {
     headers: {
       'Cache-Control': 'public, max-age=31536000, immutable',
       'Content-Type': 'image/png',
