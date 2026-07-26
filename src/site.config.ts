@@ -16,7 +16,9 @@ const config: SiteConfig = {
   // Try https://squoosh.app/ to easily convert images to JPEG.
   socialCardAvatarImage: './src/content/avatar.jpg',
   // Font imported from @fontsource or elsewhere, used for the entire site.
-  font: 'JetBrains Mono Variable',
+  // 和紙テーマでは本文は明朝体ではなくゴシック体（システムフォント）を使用。
+  // 見出し用の明朝体・コード用の等幅フォントは Layout.astro / global.css 側で個別に定義している。
+  font: '"Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif',
   pageSize: 6,
   trailingSlashes: false,
   navLinks: [
@@ -25,12 +27,67 @@ const config: SiteConfig = {
     { name: 'Blog', url: '/blog' },
     { name: 'GitHub', url: 'https://github.com/sugiyan97', external: true },
   ],
-  // テーマ: select モードで複数から選択（SelectTheme.astro が表示される）
+  // テーマ: light-dark-auto モードでライト/ダークの自動切替のみを行う
+  // （テーマ選択ダイアログは表示しない）。github-light / github-dark を
+  // 「和紙（藍と朱）」の配色で上書きし、サイト全体の配色として使用する。
   themes: {
-    mode: 'select',
-    default: 'github-dark',
-    include: ['github-light', 'github-dark', 'dracula'],
-    overrides: {},
+    mode: 'light-dark-auto',
+    default: 'auto',
+    include: ['github-light', 'github-dark'],
+    overrides: {
+      'github-light': {
+        foreground: '#263640',
+        background: '#ece4d1',
+        accent: '#bf4438',
+        heading1: '#263640',
+        heading2: '#263640',
+        heading3: '#263640',
+        heading4: '#263640',
+        heading5: '#263640',
+        heading6: '#263640',
+        list: '#56645f',
+        italic: '#263640',
+        link: '#234a63',
+        separator: '#8b9086',
+        note: '#234a63',
+        tip: '#4f7a5c',
+        important: '#7c3f56',
+        caution: '#a97d2e',
+        warning: '#bf4438',
+        blue: '#234a63',
+        green: '#4f7a5c',
+        red: '#bf4438',
+        yellow: '#a97d2e',
+        magenta: '#7c3f56',
+        cyan: '#5f8c86',
+      },
+      'github-dark': {
+        foreground: '#ece4d1',
+        background: '#16222c',
+        accent: '#e2735f',
+        heading1: '#ece4d1',
+        heading2: '#ece4d1',
+        heading3: '#ece4d1',
+        heading4: '#ece4d1',
+        heading5: '#ece4d1',
+        heading6: '#ece4d1',
+        list: '#a9b6bc',
+        italic: '#ece4d1',
+        link: '#8fb3cc',
+        separator: '#5f7078',
+        note: '#8fb3cc',
+        tip: '#7fae8c',
+        important: '#b97e93',
+        caution: '#d1a355',
+        warning: '#e2735f',
+        blue: '#8fb3cc',
+        green: '#7fae8c',
+        red: '#e2735f',
+        yellow: '#d1a355',
+        magenta: '#b97e93',
+        cyan: '#7fa2b8',
+      },
+    },
   },
   socialLinks: {
     github: 'https://github.com/sugiyan97',

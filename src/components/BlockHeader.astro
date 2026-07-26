@@ -1,6 +1,38 @@
+---
+interface Props {
+  mark?: string
+}
+const { mark } = Astro.props
+---
+
 <>
-  <h1 class="text-accent text-[1.6rem] pb-2.5 pl-1 mt-4 md:mt-7 font-semibold">
+  <h1
+    class="flex items-center gap-2.5 text-foreground text-[1.6rem] pb-2 pl-1 mt-4 md:mt-7 font-semibold font-display"
+  >
+    {
+      mark && (
+        <span
+          class="inline-flex shrink-0 items-center justify-center size-7 rounded-full bg-accent text-background text-xs font-display -rotate-6"
+          aria-hidden="true"
+        >
+          {mark}
+        </span>
+      )
+    }
     <slot />
   </h1>
-  <div class="border border-accent/30 rounded-xl h-1 w-full"></div>
+  <svg
+    class="block w-full h-2 mb-1 text-foreground/70"
+    viewBox="0 0 400 8"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M0,4 C60,1 90,7 150,3 C220,0 260,6 320,2 C350,1 380,5 400,3"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.4"
+      stroke-linecap="round"
+      opacity="0.9"></path>
+  </svg>
 </>
