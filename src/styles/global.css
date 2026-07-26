@@ -99,6 +99,42 @@ body > div {
   z-index: 1;
 }
 
+/* 麻の葉文様の帯。ヘッダーの上に薄く敷く装飾。 */
+.washi-band {
+  height: 10px;
+  background-color: var(--theme-accent);
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'><g fill='none' stroke='%23000000' stroke-width='1' opacity='0.35'><path d='M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z'/><path d='M28 0 L28 64 M0 16 L28 32 L56 16 M0 48 L28 32 L56 48'/></g></svg>");
+  background-size: 42px 73px;
+}
+
+/* 背表紙のような縦書きラベル。広い画面でのみ表示する。 */
+.washi-spine {
+  writing-mode: vertical-rl;
+  font-family: var(--theme-font-display);
+  font-size: 0.9375rem;
+  letter-spacing: 0.3em;
+  color: color-mix(in oklab, var(--theme-foreground) 70%, transparent);
+  border-right: 1px solid color-mix(in oklab, var(--theme-foreground) 25%, transparent);
+  padding: 2.5rem 0.75rem 2.5rem 0;
+  white-space: nowrap;
+  max-height: calc(100vh - 5rem);
+}
+
+.washi-spine-dot {
+  color: var(--theme-accent);
+  font-weight: 700;
+}
+
+/* 記事本文の h2 見出しの下に敷く筆致罫線（テーマごとにインクの色を変える）。 */
+:root[data-theme='github-light'] .prose h2::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0,4 C60,1 90,7 150,3 C220,0 260,6 320,2 C350,1 380,5 400,3' fill='none' stroke='%23263640' stroke-width='2.4' stroke-linecap='round' opacity='0.55'/></svg>");
+}
+
+:root[data-theme='github-dark'] .prose h2::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0,4 C60,1 90,7 150,3 C220,0 260,6 320,2 C350,1 380,5 400,3' fill='none' stroke='%23ece4d1' stroke-width='2.4' stroke-linecap='round' opacity='0.55'/></svg>");
+}
+
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
@@ -254,7 +290,18 @@ article img {
   }
 
   h2 {
-    @apply text-[1.6rem] text-heading2 mt-12;
+    @apply text-[1.6rem] text-heading2 mt-12 relative pb-2;
+
+    &::before {
+      @apply inline-block size-3.5 rounded-full bg-accent align-middle mr-2 -rotate-6;
+      content: '';
+    }
+
+    &::after {
+      @apply block h-2 mt-1.5;
+      content: '';
+      background-size: 100% 100%;
+    }
 
     .heading-anchor svg {
       @apply size-5.5;

@@ -164,14 +164,25 @@ let generatedCss: string = cssLines.join('\n')
     {themeMode === 'select' && <LightDarkAutoThemeLoader />}
   </head>
   <body class="w-full h-full m-0 bg-background text-foreground">
-    <div
-      class="flex flex-col max-w-3xl min-h-screen border-accent/10 m-auto p-3 sm:py-5 sm:px-6 md:py-10"
-    >
-      <Header />
-      <main class="flex flex-col py-1">
-        <slot />
-      </main>
-      <Footer />
+    <div class="washi-band" aria-hidden="true"></div>
+    <div class="flex justify-center items-start gap-6 xl:gap-8">
+      <aside
+        class="washi-spine hidden xl:block shrink-0 sticky top-10"
+        aria-hidden="true"
+      >
+        技術<span class="washi-spine-dot">・</span>日々の学び<span class="washi-spine-dot"
+          >・</span
+        >sugiyan の記録
+      </aside>
+      <div
+        class="flex flex-col max-w-3xl w-full min-h-screen border-accent/10 p-3 sm:py-5 sm:px-6 md:py-10"
+      >
+        <Header />
+        <main class="flex flex-col py-1">
+          <slot />
+        </main>
+        <Footer />
+      </div>
     </div>
   </body>
 </html>

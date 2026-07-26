@@ -16,9 +16,17 @@ const filteredHeadings = headings.filter(({ depth }) => depth >= 2 && depth <= 3
   class="toc relative md:mx-2 xl:mx-0 text-foreground/90 text-sm bg-foreground/5 xl:bg-transparent px-8 xl:pr-0 py-6 mt-5 xl:mt-0 xl:w-full rounded-xl border-3 xl:border-none border-accent/10 xl:sticky xl:top-10 xl:basis-[274px] 2xl:basis-[320px] xl:order-2 xl:shrink-0 xl:opacity-90"
 >
   <summary
-    class="list-none marker:hidden marker:content-[''] before:content-['>'] before:text-accent before:font-semibold before:absolute before:left-3 cursor-pointer"
-    >Table of Contents</summary
+    class="toc-summary list-none marker:hidden marker:content-[''] cursor-pointer flex items-center gap-2 font-display font-semibold"
   >
+    <span
+      class="inline-flex items-center justify-center size-6 shrink-0 rounded-full bg-accent text-background text-[0.7rem] -rotate-6"
+      aria-hidden="true"
+    >
+      目
+    </span>
+    Table of Contents
+    <span class="toc-chevron ml-auto text-accent shrink-0" aria-hidden="true">›</span>
+  </summary>
   <nav class="w-full text-sm xl:-ml-1">
     <ul class="mt-4 flex flex-col max-w-full">
       {filteredHeadings.map((heading) => <TOCHeading heading={heading} />)}
@@ -48,7 +56,12 @@ const filteredHeadings = headings.filter(({ depth }) => depth >= 2 && depth <= 3
 </script>
 
 <style>
-  details[open] summary:before {
+  .toc-chevron {
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+
+  details[open] .toc-chevron {
     transform: rotate(90deg);
   }
 </style>

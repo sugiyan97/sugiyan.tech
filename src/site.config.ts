@@ -27,13 +27,13 @@ const config: SiteConfig = {
     { name: 'Blog', url: '/blog' },
     { name: 'GitHub', url: 'https://github.com/sugiyan97', external: true },
   ],
-  // テーマ: select モードで複数から選択（SelectTheme.astro が表示される）
-  // github-light / github-dark を「和紙（藍と朱）」の配色で上書きし、サイト全体の
-  // デフォルト配色として使用する。dracula は元のまま残し、代替テーマとして選択可能にする。
+  // テーマ: light-dark-auto モードでライト/ダークの自動切替のみを行う
+  // （テーマ選択ダイアログは表示しない）。github-light / github-dark を
+  // 「和紙（藍と朱）」の配色で上書きし、サイト全体の配色として使用する。
   themes: {
-    mode: 'select',
-    default: 'github-dark',
-    include: ['github-light', 'github-dark', 'dracula'],
+    mode: 'light-dark-auto',
+    default: 'auto',
+    include: ['github-light', 'github-dark'],
     overrides: {
       'github-light': {
         foreground: '#263640',
