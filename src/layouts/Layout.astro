@@ -30,6 +30,9 @@ const pageKeywords = [
 ].join(', ')
 const baseCssVars: { [key: string]: string } = {
   'theme-font': siteConfig.font,
+  // コードブロックは常に等幅フォント、見出しは明朝体を使う（本文のテーマフォントとは独立）。
+  'theme-font-mono': '"JetBrains Mono Variable", monospace',
+  'theme-font-display': '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif',
   'ec-frm-frameBoxShdCssVal': 'none',
   'ec-frm-edTabBrdRad': '0',
   'ec-frm-edTabBarBrdCol':
