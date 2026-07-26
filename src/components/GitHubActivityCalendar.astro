@@ -278,6 +278,14 @@ const height = labelHeight + (blockSize + blockMargin) * 7 - blockMargin
           ))}
         </svg>
       </div>
+      <script>
+        const scrollContainer = document.querySelector<HTMLElement>(
+          '#github-activity-calendar .overflow-x-auto',
+        )
+        if (scrollContainer) {
+          scrollContainer.scrollLeft = scrollContainer.scrollWidth
+        }
+      </script>
       {!(hideTotalCount && hideColorLegend) && (
         <footer class="flex flex-col sm:flex-row sm:justify-between gap-x-1 gap-y-2">
           {!hideTotalCount && (
