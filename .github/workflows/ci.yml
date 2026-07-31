@@ -4,7 +4,7 @@ on:
   push:
     branches: ['main']
   pull_request:
-    branches: ['main', 'feat/*', 'fix/*']
+    branches: ['main']
     types: [opened, synchronize, reopened]
 
 permissions:
@@ -14,6 +14,25 @@ env:
   BUILD_PATH: '.'
 
 jobs:
+  branch-name-check:
+    name: Branch name check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [[ "$HEAD_REF" =~ ^dependabot/ ]]; then
+            echo "Dependabot branch, skipping check: $HEAD_REF"
+            exit 0
+          fi
+          if [[ ! "$HEAD_REF" =~ ^(feat|fix|docs|chore|refactor|test|ci)/[a-z0-9._-]+$ ]]; then
+            echo "::error::ブランチ名 '$HEAD_REF' が命名規則に従っていません。<type>/<kebab-case-description> の形式にしてください（type: feat, fix, docs, chore, refactor, test, ci）。詳細は CONTRIBUTING.md を参照してください。"
+            exit 1
+          fi
+          echo "Branch name '$HEAD_REF' is valid."
+
   build:
     name: Build
     runs-on: ubuntu-latest

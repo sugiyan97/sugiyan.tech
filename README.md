@@ -31,6 +31,11 @@ pnpm dev       # http://localhost:4321 で開発サーバーを起動
 - GitHub Actions（`.github/workflows/ci.yml`）で push / PR ごとに format check・型チェック・ビルドを実行しています。
 - 本番デプロイは [Cloudflare Pages](https://pages.cloudflare.com/) が `main` ブランチを追跡してビルド・公開しています（ビルドコマンド: `pnpm build`、出力ディレクトリ: `dist`）。
 
+## ブランチ命名規則
+
+ブランチ名は `<type>/<kebab-case-description>` の形式にしてください（例: `feat/add-resume-nav-link`）。
+詳細は [CONTRIBUTING.md](./CONTRIBUTING.md) を参照してください。
+
 ## 記事の書き方
 
 記事は `src/content/blogs/` 配下に Markdown（`.md`）または MDX（`.mdx`）で追加します。
