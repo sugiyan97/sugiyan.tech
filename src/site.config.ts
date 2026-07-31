@@ -26,6 +26,7 @@ const config: SiteConfig = {
     { name: 'About', url: '/about' },
     { name: 'Blog', url: '/blog' },
     { name: 'GitHub', url: 'https://github.com/sugiyan97', external: true },
+    { name: 'Resume', url: 'https://sugiyan97.github.io/resume/', external: true },
   ],
   // テーマ: light-dark-auto モードでライト/ダークの自動切替のみを行う
   // （テーマ選択ダイアログは表示しない）。github-light / github-dark を
