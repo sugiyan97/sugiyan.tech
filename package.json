@@ -78,7 +78,7 @@
     "prettier-plugin-astro": "0.14.1",
     "sass-embedded": "^1.99.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.62.1",
+    "typescript-eslint": "^8.68.0",
     "vitest": "^4.1.9"
   },
   "pnpm": {
