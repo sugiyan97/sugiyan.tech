@@ -41,7 +41,7 @@ export interface FrontmatterImage {
     height: number
     src: string
     width: number
-    format: 'avif' | 'png' | 'webp' | 'jpeg' | 'jpg' | 'svg' | 'tiff' | 'gif'
+    format: 'avif' | 'png' | 'webp' | 'jpeg' | 'jpg' | 'svg' | 'tiff' | 'gif' | 'apng'
   }
 }
 
