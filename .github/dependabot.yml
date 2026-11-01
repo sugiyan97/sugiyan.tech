@@ -9,7 +9,20 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'weekly'
+    groups:
+      # minor / patch は1つのPRにまとめ、同一ベースの複数PRによる
+      # pnpm-lock.yaml の衝突・重複を防ぐ。major は個別PRのまま確認する。
+      npm-minor-and-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      github-actions:
+        patterns:
+          - '*'
