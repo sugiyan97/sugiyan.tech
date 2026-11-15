@@ -76,17 +76,15 @@ const hasValidCoverImage =
   tags={postData.tags}
 >
   <article class="max-w-full py-7.5" data-pagefind-body>
-    {
-      hasValidCoverImage && (
-        <Image
-          priority
-          layout="constrained"
-          src={coverImage.src}
-          alt={coverImage.alt}
-          class="w-full rounded-xl mb-5"
-        />
-      )
-    }
+    {hasValidCoverImage && (
+      <Image
+        priority
+        layout="constrained"
+        src={coverImage.src}
+        alt={coverImage.alt}
+        class="w-full rounded-xl mb-5"
+      />
+    )}
     <div class="md:mx-2">
       <h1
         id={post.id}
@@ -96,13 +94,11 @@ const hasValidCoverImage =
       </h1>
       <div class="my-2 border-l-2 border-accent/80 pl-4 py-2">
         <PostInfo post={post} class="mb-1" />
-        {
-          tags && (
-            <div class="mt-4">
-              <Tags tags={tags} />
-            </div>
-          )
-        }
+        {tags && (
+          <div class="mt-4">
+            <Tags tags={tags} />
+          </div>
+        )}
       </div>
     </div>
     <div class="flex flex-col xl:gap-1 2xl:gap-18 xl:flex-row xl:items-start">
@@ -112,39 +108,33 @@ const hasValidCoverImage =
       </div>
     </div>
   </article>
-  {
-    nextPostInSeries && (
-      <a
-        href={`/blog/${nextPostInSeries.id}`}
-        class="button justify-center -mt-8 mb-8 whitespace-normal! text-center flex gap-2 sm:gap-3 items-center"
-      >
-        <span>Next: {nextPostInSeries.data.title}</span>
-        <ChevronsRight class="size-5 hidden sm:block" />
-      </a>
-    )
-  }
-  {
-    AddendumContent && (
-      <PostAddendum avatarImage={addendumAvatarImage}>
-        <AddendumContent />
-      </PostAddendum>
-    )
-  }
-  {
-    showSeries && series ? (
-      <section>
-        <DividerText text={`${series.title} Series`} />
-        {series.entries.map((seriesPost) => (
-          <PostPreview post={seriesPost} />
-        ))}
-      </section>
-    ) : prev || next ? (
-      <section>
-        <DividerText text="More Posts" />
-        {prev && <PostPreview post={prev} />}
-        {next && <PostPreview post={next} />}
-      </section>
-    ) : null
-  }
+  {nextPostInSeries && (
+    <a
+      href={`/blog/${nextPostInSeries.id}`}
+      class="button justify-center -mt-8 mb-8 whitespace-normal! text-center flex gap-2 sm:gap-3 items-center"
+    >
+      <span>Next: {nextPostInSeries.data.title}</span>
+      <ChevronsRight class="size-5 hidden sm:block" />
+    </a>
+  )}
+  {AddendumContent && (
+    <PostAddendum avatarImage={addendumAvatarImage}>
+      <AddendumContent />
+    </PostAddendum>
+  )}
+  {showSeries && series ? (
+    <section>
+      <DividerText text={`${series.title} Series`} />
+      {series.entries.map((seriesPost) => (
+        <PostPreview post={seriesPost} />
+      ))}
+    </section>
+  ) : prev || next ? (
+    <section>
+      <DividerText text="More Posts" />
+      {prev && <PostPreview post={prev} />}
+      {next && <PostPreview post={next} />}
+    </section>
+  ) : null}
   <ScrollUpButton />
 </Layout>

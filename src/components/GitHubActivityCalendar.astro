@@ -222,96 +222,94 @@ const width = weeks.length * (blockSize + blockMargin) - blockMargin
 const height = labelHeight + (blockSize + blockMargin) * 7 - blockMargin
 ---
 
-{
-  data && (
-    <article
-      id="github-activity-calendar"
-      class="w-max max-w-full flex flex-col gap-2 text-sm bg-foreground/4 border border-accent/15 rounded-xl px-4 py-3.5"
+{data && (
+  <article
+    id="github-activity-calendar"
+    class="w-max max-w-full flex flex-col gap-2 text-sm bg-foreground/4 border border-accent/15 rounded-xl px-4 py-3.5"
+  >
+    <div
+      class="max-w-full overflow-x-auto pt-0.5"
+      style={{
+        // Don't cover the calendar with the scrollbar.
+        scrollbarGutter: 'stable',
+      }}
     >
-      <div
-        class="max-w-full overflow-x-auto pt-0.5"
-        style={{
-          // Don't cover the calendar with the scrollbar.
-          scrollbarGutter: 'stable',
-        }}
+      <svg
+        class="block visible"
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
       >
-        <svg
-          class="block visible"
-          width={width}
-          height={height}
-          viewBox={`0 0 ${width} ${height}`}
-        >
-          {!hideMonthLabels && (
-            <g>
-              {getMonthLabels(weeks, labels.months).map(({ label, weekIndex }) => (
-                <text
-                  x={(blockSize + blockMargin) * weekIndex}
-                  y={0}
-                  dominant-baseline="hanging"
-                  fill="currentColor"
-                >
-                  {label}
-                </text>
-              ))}
-            </g>
-          )}
-          {weeks.map((week, weekIndex) => (
-            <g transform={`translate(${(blockSize + blockMargin) * weekIndex}, 0)`}>
-              {week.map((activity, dayIndex) => {
-                if (!activity) return null
-                return (
-                  <rect
-                    class="stroke-foreground/10"
-                    x={0}
-                    y={labelHeight + (blockSize + blockMargin) * dayIndex}
-                    width={blockSize}
-                    height={blockSize}
-                    rx={blockRadius}
-                    ry={blockRadius}
-                    fill={colorScale[activity.level]}
-                    data-date={activity.date}
-                    data-level={activity.level}
-                  />
-                )
-              })}
-            </g>
-          ))}
-        </svg>
-      </div>
-      {!(hideTotalCount && hideColorLegend) && (
-        <footer class="flex flex-col sm:flex-row sm:justify-between gap-x-1 gap-y-2">
-          {!hideTotalCount && (
-            <div>
-              {labels.totalCount
-                ? labels.totalCount
-                    .replace('{{count}}', String(totalCount))
-                    .replace('{{year}}', String(activityYear))
-                : `${totalCount} activities in ${activityYear}`}
-            </div>
-          )}
-          {!hideColorLegend && (
-            <div class="flex items-center gap-[3px]">
-              <span class="mr-1.5">{labels.legend.less}</span>
-              {range(maxLevel + 1).map((level) => (
-                <svg width={blockSize} height={blockSize}>
-                  <rect
-                    class="stroke-foreground/10"
-                    width={blockSize}
-                    height={blockSize}
-                    fill={colorScale[level]}
-                    rx={blockRadius}
-                    ry={blockRadius}
-                  />
-                </svg>
-              ))}
-              <span class="ml-1.5">{labels.legend.more}</span>
-            </div>
-          )}
-        </footer>
-      )}
-    </article>
-  )
-}
+        {!hideMonthLabels && (
+          <g>
+            {getMonthLabels(weeks, labels.months).map(({ label, weekIndex }) => (
+              <text
+                x={(blockSize + blockMargin) * weekIndex}
+                y={0}
+                dominant-baseline="hanging"
+                fill="currentColor"
+              >
+                {label}
+              </text>
+            ))}
+          </g>
+        )}
+        {weeks.map((week, weekIndex) => (
+          <g transform={`translate(${(blockSize + blockMargin) * weekIndex}, 0)`}>
+            {week.map((activity, dayIndex) => {
+              if (!activity) return null
+              return (
+                <rect
+                  class="stroke-foreground/10"
+                  x={0}
+                  y={labelHeight + (blockSize + blockMargin) * dayIndex}
+                  width={blockSize}
+                  height={blockSize}
+                  rx={blockRadius}
+                  ry={blockRadius}
+                  fill={colorScale[activity.level]}
+                  data-date={activity.date}
+                  data-level={activity.level}
+                />
+              )
+            })}
+          </g>
+        ))}
+      </svg>
+    </div>
+    {!(hideTotalCount && hideColorLegend) && (
+      <footer class="flex flex-col sm:flex-row sm:justify-between gap-x-1 gap-y-2">
+        {!hideTotalCount && (
+          <div>
+            {labels.totalCount
+              ? labels.totalCount
+                  .replace('{{count}}', String(totalCount))
+                  .replace('{{year}}', String(activityYear))
+              : `${totalCount} activities in ${activityYear}`}
+          </div>
+        )}
+        {!hideColorLegend && (
+          <div class="flex items-center gap-[3px]">
+            <span class="mr-1.5">{labels.legend.less}</span>
+            {range(maxLevel + 1).map((level) => (
+              <svg width={blockSize} height={blockSize}>
+                <rect
+                  class="stroke-foreground/10"
+                  width={blockSize}
+                  height={blockSize}
+                  fill={colorScale[level]}
+                  rx={blockRadius}
+                  ry={blockRadius}
+                />
+              </svg>
+            ))}
+            <span class="ml-1.5">{labels.legend.more}</span>
+          </div>
+        )}
+      </footer>
+    )}
+  </article>
+)}
 <script>
   const scrollContainer = document.querySelector(
     '#github-activity-calendar .overflow-x-auto',

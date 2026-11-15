@@ -41,26 +41,22 @@ const showLightDarkButton =
           id="nav-mobile-list"
           class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
         >
-          {
-            siteConfig.navLinks.map((link) => (
-              <li class="p-1">
-                <NavLink link={link} />
-              </li>
-            ))
-          }
+          {siteConfig.navLinks.map((link) => (
+            <li class="p-1">
+              <NavLink link={link} />
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
   </div>
   <nav aria-label="Main menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
     <ul class="flex flex-row text-accent">
-      {
-        siteConfig.navLinks.map((link) => (
-          <li class="mr-5">
-            <NavLink link={link} />
-          </li>
-        ))
-      }
+      {siteConfig.navLinks.map((link) => (
+        <li class="mr-5">
+          <NavLink link={link} />
+        </li>
+      ))}
     </ul>
   </nav>
 </header>
