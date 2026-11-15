@@ -1,3 +1,5 @@
+// Loads the mdast Data augmentation (hName / hProperties)
+import type {} from 'mdast-util-to-hast'
 import type { Root, RootContent } from 'mdast'
 import type { Plugin } from 'unified'
 import type { Directives } from 'mdast-util-directive'

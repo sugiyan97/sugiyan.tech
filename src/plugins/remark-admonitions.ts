@@ -1,3 +1,5 @@
+// Loads the mdast Data augmentation (hName / hProperties)
+import type {} from 'mdast-util-to-hast'
 import type { PhrasingContent, Root } from 'mdast'
 import { toString as mdastToString } from 'mdast-util-to-string'
 import type { Plugin } from 'unified'
