@@ -6,19 +6,15 @@ const { mark } = Astro.props
 ---
 
 <>
-  <h1
-    class="flex items-center gap-2.5 text-foreground text-[1.6rem] pb-2 pl-1 mt-4 md:mt-7 font-semibold font-display"
-  >
-    {
-      mark && (
-        <span
-          class="inline-flex shrink-0 items-center justify-center size-7 rounded-full bg-accent text-background text-xs font-display -rotate-6"
-          aria-hidden="true"
-        >
-          {mark}
-        </span>
-      )
-    }
+  <h1 class="flex items-center gap-2.5 text-foreground text-[1.6rem] pb-2 pl-1 mt-4 md:mt-7 font-semibold font-display">
+    {mark && (
+      <span
+        class="inline-flex shrink-0 items-center justify-center size-7 rounded-full bg-accent text-background text-xs font-display -rotate-6"
+        aria-hidden="true"
+      >
+        {mark}
+      </span>
+    )}
     <slot />
   </h1>
   <svg
@@ -33,6 +29,7 @@ const { mark } = Astro.props
       stroke="currentColor"
       stroke-width="2.4"
       stroke-linecap="round"
-      opacity="0.9"></path>
+      opacity="0.9"
+    ></path>
   </svg>
 </>

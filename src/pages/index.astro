@@ -30,43 +30,35 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
 ---
 
 <Layout>
-  {
-    HomeContent && (
-      <HomeBanner avatarImage={homeAvatarImage} githubCalendar={homeGithubCalendar}>
-        <HomeContent />
-      </HomeBanner>
-    )
-  }
-  {
-    postsHaveSeries && (
-      <section>
-        <BlockHeader mark="序">Series</BlockHeader>
-        <SeriesSection posts={sortedPosts} />
-      </section>
-    )
-  }
-  {
-    postsHaveTags && (
-      <section>
-        <BlockHeader mark="札">Tags</BlockHeader>
-        <TagsSection posts={sortedPosts} />
-      </section>
-    )
-  }
-  {
-    sortedPosts.length > 0 && (
-      <section>
-        <BlockHeader mark="記">Latest Posts</BlockHeader>
-        {sortedPosts
-          .reverse()
-          .slice(0, Math.floor(siteConfig.pageSize / 2))
-          .map((post) => (
-            <PostPreview post={post} />
-          ))}
-        <Pagination nextLink="/blog" nextText="Blog" />
-      </section>
-    )
-  }
+  {HomeContent && (
+    <HomeBanner avatarImage={homeAvatarImage} githubCalendar={homeGithubCalendar}>
+      <HomeContent />
+    </HomeBanner>
+  )}
+  {postsHaveSeries && (
+    <section>
+      <BlockHeader mark="序">Series</BlockHeader>
+      <SeriesSection posts={sortedPosts} />
+    </section>
+  )}
+  {postsHaveTags && (
+    <section>
+      <BlockHeader mark="札">Tags</BlockHeader>
+      <TagsSection posts={sortedPosts} />
+    </section>
+  )}
+  {sortedPosts.length > 0 && (
+    <section>
+      <BlockHeader mark="記">Latest Posts</BlockHeader>
+      {sortedPosts
+        .reverse()
+        .slice(0, Math.floor(siteConfig.pageSize / 2))
+        .map((post) => (
+          <PostPreview post={post} />
+        ))}
+      <Pagination nextLink="/blog" nextText="Blog" />
+    </section>
+  )}
 </Layout>
 
 <style is:global>

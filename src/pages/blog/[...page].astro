@@ -19,7 +19,9 @@ const pageTitle = 'Blog' + (page.currentPage > 1 ? ` - Page ${page.currentPage}`
 <Layout title={pageTitle} description="All posts">
   <div class="mt-2 sm:mt-0">
     <PageHeader />
-    {page.data.map((post) => <PostPreview post={post} />)}
+    {page.data.map((post) => (
+      <PostPreview post={post} />
+    ))}
     <Pagination
       prevLink={page.url.prev ? page.url.prev : undefined}
       prevText="Newer Posts"
